@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krunch - Jenny Ruby Necklace</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav>
+            <div class="nav-left">
+                <img src="assets/logo.png" alt="Krunch" style="height: 24px; margin-right: 30px;">
+                <a href="#" class="nav-link active">shop</a>
+                <a href="#" class="nav-link">style</a>
+                <a href="#" class="nav-link">verify</a>
+            </div>
+            <div class="nav-right">
+                <a href="#" class="nav-link uppercase">MY</a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <!-- Left Column: Product Image & Title -->
+        <section class="product-hero">
+            <div class="hero-header">
+                <div class="item-code-label">Item-code :</div>
+                <h1 class="product-title">JENNY [ The Ruby Experience ] in Seoul</h1>
+                <div class="product-date">2025-Mar-15</div>
+            </div>
+
+            <div class="image-container">
+                <img src="assets/images/ruby_necklace.png" alt="Ruby Diamond Necklace" class="main-product-image">
+            </div>
+
+            <div class="product-footer">
+                <p>Mark Cruz - RUBY Diamond Necklace <em>customized for JENNY</em></p>
+            </div>
+        </section>
+
+        <!-- Right Column: Details & Action -->
+        <section class="product-details">
+            <!-- Info Block -->
+            <div class="info-block">
+                <div class="info-item">
+                    <span class="label">Artist</span>
+                    <span class="value">JENNY</span>
+                </div>
+                <div class="info-item">
+                    <span class="label">Dressed Date</span>
+                    <span class="value">2025-Mar-15</span>
+                </div>
+
+                <div class="info-item description">
+                    <span class="label">Description</span>
+                    <p class="value-text">
+                        When JENNY performed in Seoul for [The Ruby Experience] she wore a customized Mark Cruz ruby
+                        diamond necklace, specially designed for her. The piece's deep red brilliance captured JENNY's
+                        alluring yet bold presence on stage.
+                    </p>
+                    <p class="value-text kr">
+                        제니는 [The Ruby Experience] 서울 공연에서, 그녀를 위해 특별히 커스터마이징된 Mark Cruz의 루비 다이아몬드 목걸이를 착용했습니다. 짙은 붉은빛의
+                        보석은 제니의 매혹적이면서도 대담한 무대 위 존재감을 고스란히 담아냈습니다.
+                    </p>
+                </div>
+
+                <div class="info-item facts">
+                    <span class="label">Facts</span>
+                    <div class="fact-list">
+                        <p>stone - ruby diamond</p>
+                        <p>length - choker fit</p>
+                    </div>
+                </div>
+
+                <div class="gallery-grid">
+                    <img src="assets/images/model_1.png" alt="Jenny wearing necklace">
+                    <img src="assets/images/model_2.png" alt="Jenny closeup">
+                </div>
+            </div>
+
+            <!-- Action Card -->
+            <div class="action-card">
+                <div class="timer-section">
+                    <div class="timer-header">Until Expiration</div>
+                    <div class="countdown" id="countdown">
+                        <div class="time-unit">
+                            <span class="number" id="days">15</span>
+                            <span class="unit">Day</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="number" id="hours">02</span>
+                            <span class="unit">Hour</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="number" id="mins">34</span>
+                            <span class="unit">Min</span>
+                        </div>
+                        <div class="time-unit">
+                            <span class="number" id="secs">19</span>
+                            <span class="unit">Sec</span>
+                        </div>
+                    </div>
+                    <div class="target-date">2025-Sep-31</div>
+                </div>
+
+                <div class="price-section top-offer">
+                    <div class="label">Top Offer</div>
+                    <div class="price">KRW 75,700,000</div>
+                </div>
+
+                <div class="bidder-count">
+                    <div class="label">Offered Person</div>
+                    <div class="count">2,147</div>
+                </div>
+
+                <div class="input-section">
+                    <div class="label">Your Offer</div>
+                    <div class="input-wrapper">
+                        <span class="currency">KRW</span>
+                        <input type="text" id="offerInput" value="76,000,000">
+                    </div>
+                    <div class="input-line"></div>
+                </div>
+
+                <div class="button-group">
+                    <button class="btn btn-primary">Set Offer</button>
+                    <button class="btn btn-outline" id="groupOfferBtn">Group Offer*</button>
+                </div>
+
+                <div class="footnote">*Group Offer의 경우, 합동 경매 제안 가능</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Business Info Footer -->
+    <footer class="business-footer">
+        <p><strong>(주)크런치</strong> | 대표: 김크런치</p>
+        <p>사업자등록번호: 123-45-67890 | 통신판매업신고: 2025-서울강남-0000</p>
+        <p>주소: 서울특별시 강남구 테헤란로 123, 크런치타워 8층</p>
+        <p>고객센터: 1588-0000 (평일 09:00 - 18:00)</p>
+        <p>이메일: help@krunch.co.kr</p>
+        <div class="footer-links">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">사업자정보확인</a>
+        </div>
+        <p style="margin-top: 20px; color: #333;">© 2025 Krunch Corp. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
