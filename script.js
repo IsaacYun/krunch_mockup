@@ -1,3 +1,86 @@
+// Password Protection Logic
+(function () {
+    const SESSION_KEY = 'krunch_auth_session';
+    const CORRECT_PASSWORD = '1111';
+
+    if (!sessionStorage.getItem(SESSION_KEY)) {
+        // Create Overlay
+        const overlay = document.createElement('div');
+        overlay.id = 'password-gate';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = '#000';
+        overlay.style.color = '#fff';
+        overlay.style.display = 'flex';
+        overlay.style.flexDirection = 'column';
+        overlay.style.justifyContent = 'center';
+        overlay.style.alignItems = 'center';
+        overlay.style.zIndex = '99999';
+
+        // Create Input
+        const input = document.createElement('input');
+        input.type = 'password';
+        input.placeholder = 'Enter Password';
+        input.style.padding = '10px';
+        input.style.fontSize = '16px';
+        input.style.marginBottom = '10px';
+        input.style.borderRadius = '5px';
+        input.style.border = '1px solid #333';
+        input.style.color = '#000'; // Ensure text is visible
+
+        // Create Button
+        const button = document.createElement('button');
+        button.innerText = 'Enter';
+        button.style.padding = '10px 20px';
+        button.style.fontSize = '16px';
+        button.style.cursor = 'pointer';
+        button.style.backgroundColor = '#fff';
+        button.style.color = '#000';
+        button.style.border = 'none';
+        button.style.borderRadius = '5px';
+
+        // Error Message
+        const errorMsg = document.createElement('p');
+        errorMsg.style.color = 'red';
+        errorMsg.style.marginTop = '10px';
+        errorMsg.style.display = 'none';
+        errorMsg.innerText = 'Incorrect Password';
+
+        // Append elements
+        overlay.appendChild(input);
+        overlay.appendChild(button);
+        overlay.appendChild(errorMsg);
+
+        // Ensure body exists or wait for it
+        if (document.body) {
+            document.body.appendChild(overlay);
+        } else {
+            window.addEventListener('DOMContentLoaded', () => {
+                document.body.appendChild(overlay);
+            });
+        }
+
+        // Logic
+        const checkPassword = () => {
+            if (input.value === CORRECT_PASSWORD) {
+                sessionStorage.setItem(SESSION_KEY, 'true');
+                overlay.remove();
+            } else {
+                errorMsg.style.display = 'block';
+                input.value = '';
+            }
+        };
+
+        button.addEventListener('click', checkPassword);
+        input.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') checkPassword();
+        });
+    }
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
     // Input Formatting
     const offerInput = document.getElementById('offerInput');
