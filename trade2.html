@@ -60,12 +60,18 @@
         .icon {
             width: 24px;
             height: 24px;
-            /* Placeholder for icons */
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
             cursor: pointer;
+        }
+
+        .icon svg {
+            width: 100%;
+            height: 100%;
+            stroke: #000;
+            fill: none;
+            stroke-width: 1.5;
         }
 
         /* Navigation Tabs */
@@ -196,8 +202,8 @@
         .price-stats {
             margin-top: 5px;
             font-size: 12px;
-            color: #41b979;
-            /* Kream Green */
+            color: #efafbc;
+            /* Pink for stats */
         }
 
         /* Stats Toggle Pill */
@@ -318,28 +324,6 @@
             color: #000;
         }
 
-        /* Size Grid (Screenshot 3) */
-        .size-compare-table {
-            width: 100%;
-            font-size: 12px;
-            text-align: center;
-            border-collapse: collapse;
-            margin-bottom: 20px;
-        }
-
-        .size-compare-table th {
-            background: #f9f9f9;
-            padding: 8px;
-            font-weight: 400;
-            color: #aaa;
-            border: 1px solid #eee;
-        }
-
-        .size-compare-table td {
-            padding: 8px;
-            border: 1px solid #eee;
-        }
-
         /* Footer */
         .sticky-footer {
             position: fixed;
@@ -356,19 +340,18 @@
             z-index: 100;
         }
 
-        .bookmark-btn {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-width: 50px;
-            color: #333;
-            font-size: 10px;
-            gap: 4px;
+        .bookmark-icon {
+            font-size: 24px;
+            padding: 0 10px;
+            cursor: pointer;
         }
 
-        .bookmark-icon {
-            font-size: 20px;
+        .bookmark-icon svg {
+            width: 24px;
+            height: 24px;
+            stroke: #000;
+            fill: none;
+            stroke-width: 1.5;
         }
 
         .action-btn {
@@ -384,15 +367,19 @@
         }
 
         .btn-buy {
-            background: #ef6253;
+            background: #efafbc;
         }
 
-        /* Kream Red */
+        /* Key Pink */
+        /* Sell button: User requested base on pink key color. 
+           If Buy is #efafbc (Light Pink), maybe Sell is Darker or just Black for contrast.
+           I'll try a Darker Pink/Reddish if user wants "based on pink" logic, but user said choose based on it. 
+           Usually Kream is Green. If I change logic to Pink-based... 
+           Let's use a Dark Gray (#333) for Sell to keep it clean, as Pink + Green might clash if not Kream defaults. 
+           But let's stick to Pink (Buy) and Black (Sell) as it's a safe, stylish combo for fashion. */
         .btn-sell {
-            background: #41b979;
+            background: #333;
         }
-
-        /* Kream Green */
 
         .btn-label {
             font-size: 14px;
@@ -417,11 +404,35 @@
 
     <!-- Header -->
     <header class="trade-header">
-        <a href="index2.html" class="icon" style="text-decoration: none; color: #000;">←</a>
+        <a href="index2.html" class="icon" style="text-decoration: none; color: #000;">
+            <!-- Simple Left Arrow SVG -->
+            <svg viewBox="0 0 24 24">
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+            </svg>
+        </a>
         <div class="header-icons">
-            <span class="icon">🔍</span>
-            <span class="icon">🏠</span>
-            <span class="icon">🛍️</span>
+            <span class="icon">
+                <!-- Search SVG -->
+                <svg viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </span>
+            <span class="icon">
+                <!-- Home SVG -->
+                <svg viewBox="0 0 24 24">
+                    <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                    <polyline points="9 22 9 12 15 12 15 22"></polyline>
+                </svg>
+            </span>
+            <span class="icon">
+                <!-- Cart/Bag SVG -->
+                <svg viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+            </span>
         </div>
     </header>
 
@@ -429,14 +440,13 @@
     <nav class="nav-tabs">
         <span class="nav-tab active">상품</span>
         <span class="nav-tab">리뷰 0</span>
-        <span class="nav-tab">사이즈</span>
         <span class="nav-tab">상세</span>
         <span class="nav-tab">추천</span>
     </nav>
 
     <!-- Product Hero -->
     <div class="hero-section">
-        <img src="assets/images/sneakers_isolated_1769132548302.png" alt="Nike Dunk Low" class="hero-img">
+        <img src="assets/images/daisy_earring_1769133898605.png" alt="Daisy Necklace" class="hero-img">
         <div class="pagination-dots">
             <div class="dot active"></div>
             <div class="dot"></div>
@@ -447,20 +457,20 @@
 
     <!-- Product Info -->
     <div class="product-info-container">
-        <a href="#" class="brand-link">Nike &gt;</a>
-        <h1 class="product-title-en">Nike x Bronx Girls Skate SB Dunk Low Black and Challenge Red</h1>
-        <p class="product-title-kr">나이키 x 브롱크스 걸스 스케이트 SB 덩크 로우 블랙 앤 챌린지 레드</p>
+        <a href="#" class="brand-link">PEACEMINUSONE &gt;</a>
+        <h1 class="product-title-en">PEACEMINUSONE Daisy Earing #1 Yellow</h1>
+        <p class="product-title-kr">피스마이너스원 데이지 이어링 #1 옐로우</p>
 
         <div class="price-area">
-            <div class="release-price"><span class="price-label-small">발매가</span>169,000원</div>
-            <div class="main-price">189,000<span class="price-currency">원</span></div>
-            <div class="price-stats">▼ 3,000원 (-1.6%)</div>
+            <div class="release-price"><span class="price-label-small">발매가</span>380,000원</div>
+            <div class="main-price">888,888<span class="price-currency">원</span></div>
+            <div class="price-stats">▲ 508,888원 (+133.9%)</div>
         </div>
 
         <!-- Market Data Toggle -->
         <div class="stats-toggle">
-            <div class="toggle-btn active">체결 거래</div>
-            <div class="toggle-btn">판매 입찰</div>
+            <!-- Removed 'Signed Transaction' (체결 거래) as requested -->
+            <div class="toggle-btn active">판매 입찰</div>
             <div class="toggle-btn">구매 입찰</div>
         </div>
 
@@ -470,39 +480,39 @@
                 <tr>
                     <th>옵션</th>
                     <th>거래가</th>
-                    <th>거래일</th>
+                    <th>입찰일</th> <!-- Changed from Transaction Date to Bid Date -->
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td>280</td>
-                    <td>189,000원</td>
-                    <td>54분 전</td>
+                    <td>-</td>
+                    <td>890,000원</td>
+                    <td>10분 전</td>
                 </tr>
                 <tr>
-                    <td>270</td>
-                    <td>192,000원</td>
-                    <td>4시간 전</td>
+                    <td>-</td>
+                    <td>895,000원</td>
+                    <td>1시간 전</td>
                 </tr>
                 <tr>
-                    <td>275</td>
-                    <td>182,000원</td>
-                    <td>7시간 전</td>
+                    <td>-</td>
+                    <td>900,000원</td>
+                    <td>3시간 전</td>
                 </tr>
                 <tr>
-                    <td>265</td>
-                    <td>200,000원</td>
-                    <td>13시간 전</td>
+                    <td>-</td>
+                    <td>910,000원</td>
+                    <td>어제</td>
                 </tr>
                 <tr>
-                    <td>265</td>
-                    <td>199,000원</td>
-                    <td>26/01/26</td>
+                    <td>-</td>
+                    <td>920,000원</td>
+                    <td>2일 전</td>
                 </tr>
             </tbody>
         </table>
 
-        <button class="more-btn">거래 내역 더보기</button>
+        <button class="more-btn">입찰 내역 더보기</button>
     </div>
 
     <div class="section-gap"></div>
@@ -511,86 +521,34 @@
     <div class="product-specs">
         <div class="spec-item">
             <span class="spec-label">모델번호</span>
-            <span class="spec-value">HV1664-001</span>
+            <span class="spec-value">PMO-DAISY-001</span>
         </div>
         <div class="spec-item">
             <span class="spec-label">출시일</span>
-            <span class="spec-value">25/01/26</span>
+            <span class="spec-value">2025-08-08</span>
         </div>
         <div class="spec-item">
             <span class="spec-label">컬러</span>
-            <span class="spec-value">Black/Red</span>
+            <span class="spec-value">Yellow</span>
         </div>
         <div class="spec-item">
             <span class="spec-label">발매가</span>
-            <span class="spec-value">169,000원</span>
+            <span class="spec-value">380,000원</span>
         </div>
     </div>
 
     <div class="section-gap"></div>
 
-    <h2 class="section-title">사이즈</h2>
-    <div style="padding: 0 16px;">
-        <table class="size-compare-table">
-            <thead>
-                <tr>
-                    <th>KR</th>
-                    <th>US (M)</th>
-                    <th>US (W)</th>
-                    <th>UK</th>
-                    <th>EU</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>225</td>
-                    <td>3.5</td>
-                    <td>5</td>
-                    <td>3</td>
-                    <td>35.5</td>
-                </tr>
-                <tr>
-                    <td>230</td>
-                    <td>4</td>
-                    <td>5.5</td>
-                    <td>3.5</td>
-                    <td>36</td>
-                </tr>
-                <tr>
-                    <td>235</td>
-                    <td>4.5</td>
-                    <td>6</td>
-                    <td>4</td>
-                    <td>36.5</td>
-                </tr>
-                <tr>
-                    <td>240</td>
-                    <td>5</td>
-                    <td>6.5</td>
-                    <td>4.5</td>
-                    <td>37.5</td>
-                </tr>
-                <tr>
-                    <td>245</td>
-                    <td>5.5</td>
-                    <td>7</td>
-                    <td>5</td>
-                    <td>38</td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-
-    <div class="section-gap"></div>
+    <!-- Size Grid Removed from here -->
 
     <div style="padding: 0 16px 20px; display: flex; align-items: center; justify-content: space-between;">
         <div style="display: flex; align-items: center; gap: 10px;">
             <div
                 style="width: 40px; height: 40px; background: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff;">
-                ✓</div> <!-- Brand Logo placeholder -->
+                PMO</div>
             <div>
-                <b style="font-size: 14px;">Nike</b>
-                <span style="font-size: 12px; color: #aaa; display: block;">나이키 · 관심 31.7만</span>
+                <b style="font-size: 14px;">PEACEMINUSONE</b>
+                <span style="font-size: 12px; color: #aaa; display: block;">피스마이너스원 · 관심 99.9만</span>
             </div>
         </div>
         <button
@@ -600,17 +558,20 @@
 
     <!-- Sticky Footer -->
     <div class="sticky-footer">
-        <div class="bookmark-btn">
-            <span class="bookmark-icon">🔖</span>
-            <span>관심</span>
+        <div class="bookmark-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#000" stroke-width="2">
+                <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+            </svg>
         </div>
+        <!-- Buy Button in Pink -->
         <a href="#" class="action-btn btn-buy">
             <span class="btn-label">구매</span>
-            <span class="btn-price">189,000원</span>
+            <span class="btn-price">888,888원</span>
         </a>
+        <!-- Sell Button in Black/Dark -->
         <a href="#" class="action-btn btn-sell">
             <span class="btn-label">판매</span>
-            <span class="btn-price">160,000원</span>
+            <span class="btn-price">800,000원</span>
         </a>
     </div>
 
