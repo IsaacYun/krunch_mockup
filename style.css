@@ -551,9 +551,9 @@ nav {
 
 
 .grid-card {
-    background: #000;
-    border: 1px solid #333;
-    /* Dark border */
+    background: #fff;
+    border: 1px solid #eee;
+    /* Light border */
     border-radius: 0px;
     /* Sharp edges like detail2 header? Or keep 3px? detail2 uses sharp edges mostly. Let's go sharp. */
     aspect-ratio: 1/1.2;
@@ -563,8 +563,8 @@ nav {
     justify-content: space-between;
     padding: 15px;
     text-decoration: none;
-    color: #fff;
-    /* White text */
+    color: #000;
+    /* Black text */
     position: relative;
     transition: transform 0.2s, border-color 0.2s;
 }
@@ -572,8 +572,8 @@ nav {
 
 .grid-card:hover {
     transform: translateY(-2px);
-    border-color: #666;
-    /* Lighter border on hover */
+    border-color: #000;
+    /* Darker border on hover */
 }
 
 .card-title {
@@ -584,7 +584,7 @@ nav {
     text-decoration: underline;
     text-underline-offset: 3px;
     margin-bottom: 10px;
-    color: #fff;
+    color: #000;
 }
 
 .grid-card img {
@@ -592,16 +592,15 @@ nav {
     max-height: 50%;
     object-fit: contain;
     /* Removed mix-blend-mode: multiply since bg is black */
-    filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.1));
-    /* Subtle glow */
+    filter: none;
+    /* Remove glow */
 }
 
 .card-label {
     font-size: 11px;
     font-weight: 600;
     margin-top: auto;
-    color: #aaa;
-    /* Gray label */
+    color: #000;
 }
 
 .placeholder-icon {
