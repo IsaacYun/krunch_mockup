@@ -9,268 +9,613 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
     <style>
-        /* Specific Styles for Trade Page inline for faster iteration, can move to style.css later */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', 'Noto Sans KR', sans-serif;
+        }
+
         body {
             background-color: #fff;
             color: #000;
+            padding-bottom: 100px;
+            /* Space for fixed footer */
         }
 
+        /* Top Caution Banner */
+        .caution-banner {
+            background-color: #f9f9f9;
+            padding: 12px 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            color: #333;
+            border-bottom: 1px solid #eee;
+        }
+
+        .caution-banner b {
+            font-weight: 700;
+            margin-right: 4px;
+        }
+
+        /* Main Header */
         .trade-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid #f0f0f0;
+            padding: 10px 16px;
+            background: #fff;
         }
 
-        .trade-hero {
+        .header-icons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            /* Placeholder for icons */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* Navigation Tabs */
+        .nav-tabs {
+            display: flex;
+            overflow-x: auto;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 10;
+            padding: 0 16px;
+        }
+
+        .nav-tab {
+            padding: 14px 0;
+            margin-right: 24px;
+            font-size: 14px;
+            color: #aaa;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .nav-tab.active {
+            color: #000;
+            font-weight: 700;
+            border-bottom: 2px solid #000;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: #f4f4f4;
+            /* Light gray bg like screenshot */
             padding: 40px 0;
-            text-align: center;
-            background: #f9f9f9;
+            position: relative;
+            display: flex;
+            justify-content: center;
         }
 
-        .trade-hero img {
+        .hero-img {
             width: 80%;
             max-width: 300px;
+            aspect-ratio: 1/1;
+            object-fit: contain;
         }
 
-        .trade-info {
-            padding: 20px;
+        .qr-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #aaa;
         }
 
-        .brand-name {
-            font-weight: bold;
+        .pagination-dots {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 5px;
+        }
+
+        .dot {
+            width: 20px;
+            height: 2px;
+            background: #ddd;
+        }
+
+        .dot.active {
+            background: #000;
+        }
+
+        /* Product Info */
+        .product-info-container {
+            padding: 20px 16px;
+        }
+
+        .brand-link {
+            font-size: 14px;
+            font-weight: 700;
             text-decoration: underline;
-            margin-bottom: 5px;
+            margin-bottom: 8px;
             display: inline-block;
         }
 
-        .product-name-en {
-            font-size: 18px;
-            margin-bottom: 5px;
+        .product-title-en {
+            font-size: 16px;
+            margin-bottom: 4px;
+            line-height: 1.4;
         }
 
-        .product-name-kr {
-            font-size: 14px;
+        .product-title-kr {
+            font-size: 13px;
             color: #aaa;
             margin-bottom: 20px;
         }
 
-        .price-section {
+        .price-area {
             margin-bottom: 30px;
         }
 
-        .price-label {
+        .release-price {
             font-size: 12px;
             color: #aaa;
+            text-decoration: line-through;
+            /* Screenshot shows release price logic usually */
+            margin-bottom: 4px;
         }
 
-        .current-price {
+        .price-label-small {
+            font-size: 12px;
+            color: #aaa;
+            margin-right: 4px;
+            text-decoration: none;
+        }
+
+        .main-price {
             font-size: 24px;
             font-weight: 700;
         }
 
-        .price-change {
-            font-size: 12px;
-            color: #ff0000;
-            /* Red for change */
+        .price-currency {
+            font-size: 18px;
+            font-weight: 600;
         }
 
-        .action-buttons {
-            display: flex;
+        .price-stats {
+            margin-top: 5px;
+            font-size: 12px;
+            color: #41b979;
+            /* Kream Green */
+        }
+
+        /* Stats Toggle Pill */
+        .stats-toggle {
+            background: #f4f4f4;
+            display: inline-flex;
+            padding: 2px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .toggle-btn {
+            flex: 1;
+            text-align: center;
+            padding: 8px 0;
+            font-size: 12px;
+            color: #aaa;
+            border-radius: 4px;
+        }
+
+        .toggle-btn.active {
+            background: #fff;
+            color: #000;
+            font-weight: 600;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Transaction List */
+        .trans-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .trans-table th {
+            text-align: left;
+            color: #aaa;
+            font-weight: 400;
+            font-size: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .trans-table th:nth-child(2) {
+            text-align: center;
+        }
+
+        .trans-table th:nth-child(3) {
+            text-align: right;
+        }
+
+        .trans-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .trans-table td:nth-child(2) {
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .trans-table td:nth-child(3) {
+            text-align: right;
+            color: #aaa;
+        }
+
+        .more-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #fff;
+            border: 1px solid #ddd;
+            color: #555;
+            font-size: 13px;
+            border-radius: 12px;
+            /* Set border radius as requested? Kream uses rounded */
+            cursor: pointer;
+        }
+
+        /* Brand & Product Grid */
+        .section-gap {
+            height: 10px;
+            background: #f4f4f4;
+            margin: 20px 0;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            margin-top: 20px;
+            padding: 0 16px;
+        }
+
+        .product-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 10px;
+            padding: 0 16px 20px;
+        }
+
+        .spec-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .spec-label {
+            display: block;
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 4px;
+        }
+
+        .spec-value {
+            display: block;
+            font-size: 14px;
+            color: #000;
+        }
+
+        /* Size Grid (Screenshot 3) */
+        .size-compare-table {
+            width: 100%;
+            font-size: 12px;
+            text-align: center;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        .size-compare-table th {
+            background: #f9f9f9;
+            padding: 8px;
+            font-weight: 400;
+            color: #aaa;
+            border: 1px solid #eee;
+        }
+
+        .size-compare-table td {
+            padding: 8px;
+            border: 1px solid #eee;
+        }
+
+        /* Footer */
+        .sticky-footer {
             position: fixed;
             bottom: 0;
             left: 0;
             width: 100%;
-            padding: 10px 15px 30px;
             background: #fff;
             border-top: 1px solid #f0f0f0;
+            padding: 10px 16px 30px;
+            /* Extra padding for iOS home bar */
+            display: flex;
+            align-items: center;
+            gap: 10px;
             z-index: 100;
         }
 
-        .btn-trade {
-            flex: 1;
-            height: 50px;
-            border-radius: 10px;
-            color: #fff;
-            font-weight: 600;
+        .bookmark-btn {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            min-width: 50px;
+            color: #333;
+            font-size: 10px;
+            gap: 4px;
+        }
+
+        .bookmark-icon {
+            font-size: 20px;
+        }
+
+        .action-btn {
+            flex: 1;
+            height: 50px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
             text-decoration: none;
-            font-size: 14px;
-        }
-
-        .btn-trade span {
-            font-size: 12px;
-            font-weight: 400;
-            opacity: 0.9;
-        }
-
-        .btn-sell {
-            background-color: #41b979;
-            /* Kream Green */
         }
 
         .btn-buy {
-            background-color: #ef6253;
-            /* Kream Red */
+            background: #ef6253;
         }
 
-        .product-details,
-        .delivery-info {
-            padding: 0 20px 20px;
+        /* Kream Red */
+        .btn-sell {
+            background: #41b979;
         }
 
-        .info-row {
-            display: flex;
-            justify-content: space-between;
-            padding: 15px 0;
-            border-bottom: 1px solid #f0f0f0;
+        /* Kream Green */
+
+        .btn-label {
             font-size: 14px;
+            font-weight: 700;
         }
 
-        .info-label {
-            color: #aaa;
-        }
-
-        .size-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 10px;
-            padding: 20px;
-            border-top: 10px solid #f4f4f4;
-        }
-
-        .size-item {
-            border: 1px solid #eee;
-            padding: 10px;
-            text-align: center;
-            border-radius: 8px;
-        }
-
-        .size-num {
-            font-weight: bold;
-        }
-
-        .size-price {
+        .btn-price {
             font-size: 11px;
-            color: #ef6253;
+            font-weight: 400;
+            opacity: 0.9;
         }
     </style>
 </head>
 
 <body>
+
+    <!-- Top Caution Banner -->
+    <a href="#" class="caution-banner" style="text-decoration: none;">
+        <span><b>판매 거래 주의사항</b> 반드시 보유한 상품만 판매하세요.</span>
+        <span>&gt;</span>
+    </a>
+
+    <!-- Header -->
     <header class="trade-header">
-        <a href="index2.html" style="text-decoration: none; color: #000; font-size: 24px;">←</a>
-        <div class="header-actions">
-            <span style="font-size: 24px;">🏠</span>
-            <span style="font-size: 24px; margin-left: 15px;">🛍️</span>
+        <a href="index2.html" class="icon" style="text-decoration: none; color: #000;">←</a>
+        <div class="header-icons">
+            <span class="icon">🔍</span>
+            <span class="icon">🏠</span>
+            <span class="icon">🛍️</span>
         </div>
     </header>
 
-    <div class="trade-hero">
-        <img src="assets/images/sneakers_isolated_1769132548302.png" alt="Nike Dunk Low">
+    <!-- Sticky Navigation -->
+    <nav class="nav-tabs">
+        <span class="nav-tab active">상품</span>
+        <span class="nav-tab">리뷰 0</span>
+        <span class="nav-tab">사이즈</span>
+        <span class="nav-tab">상세</span>
+        <span class="nav-tab">추천</span>
+    </nav>
+
+    <!-- Product Hero -->
+    <div class="hero-section">
+        <img src="assets/images/sneakers_isolated_1769132548302.png" alt="Nike Dunk Low" class="hero-img">
+        <div class="pagination-dots">
+            <div class="dot active"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <div class="qr-icon">[ o ]</div>
     </div>
 
-    <div class="trade-info">
-        <a href="#" class="brand-name">Nike</a>
-        <h1 class="product-name-en">Nike x Bronx Girls Skate SB Dunk Low Black and Challenge Red</h1>
-        <p class="product-name-kr">나이키 x 브롱크스 걸스 스케이트 SB 덩크 로우 블랙 앤 챌린지 레드</p>
+    <!-- Product Info -->
+    <div class="product-info-container">
+        <a href="#" class="brand-link">Nike &gt;</a>
+        <h1 class="product-title-en">Nike x Bronx Girls Skate SB Dunk Low Black and Challenge Red</h1>
+        <p class="product-title-kr">나이키 x 브롱크스 걸스 스케이트 SB 덩크 로우 블랙 앤 챌린지 레드</p>
 
-        <div class="price-section">
-            <p class="price-label">즉시 구매가</p>
-            <p class="current-price">189,000원</p>
-            <p class="price-change">▼3,000원 (-1.6%)</p>
+        <div class="price-area">
+            <div class="release-price"><span class="price-label-small">발매가</span>169,000원</div>
+            <div class="main-price">189,000<span class="price-currency">원</span></div>
+            <div class="price-stats">▼ 3,000원 (-1.6%)</div>
+        </div>
+
+        <!-- Market Data Toggle -->
+        <div class="stats-toggle">
+            <div class="toggle-btn active">체결 거래</div>
+            <div class="toggle-btn">판매 입찰</div>
+            <div class="toggle-btn">구매 입찰</div>
+        </div>
+
+        <!-- Transaction Table -->
+        <table class="trans-table">
+            <thead>
+                <tr>
+                    <th>옵션</th>
+                    <th>거래가</th>
+                    <th>거래일</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>280</td>
+                    <td>189,000원</td>
+                    <td>54분 전</td>
+                </tr>
+                <tr>
+                    <td>270</td>
+                    <td>192,000원</td>
+                    <td>4시간 전</td>
+                </tr>
+                <tr>
+                    <td>275</td>
+                    <td>182,000원</td>
+                    <td>7시간 전</td>
+                </tr>
+                <tr>
+                    <td>265</td>
+                    <td>200,000원</td>
+                    <td>13시간 전</td>
+                </tr>
+                <tr>
+                    <td>265</td>
+                    <td>199,000원</td>
+                    <td>26/01/26</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="more-btn">거래 내역 더보기</button>
+    </div>
+
+    <div class="section-gap"></div>
+
+    <h2 class="section-title">상품 정보</h2>
+    <div class="product-specs">
+        <div class="spec-item">
+            <span class="spec-label">모델번호</span>
+            <span class="spec-value">HV1664-001</span>
+        </div>
+        <div class="spec-item">
+            <span class="spec-label">출시일</span>
+            <span class="spec-value">25/01/26</span>
+        </div>
+        <div class="spec-item">
+            <span class="spec-label">컬러</span>
+            <span class="spec-value">Black/Red</span>
+        </div>
+        <div class="spec-item">
+            <span class="spec-label">발매가</span>
+            <span class="spec-value">169,000원</span>
         </div>
     </div>
 
-    <div style="height: 10px; background: #f4f4f4;"></div>
+    <div class="section-gap"></div>
 
-    <div class="product-details">
-        <div class="info-row">
-            <span class="info-label">최근 거래가</span>
-            <span class="info-value">192,000원</span>
-        </div>
-        <div class="info-row">
-            <span class="info-label">발매가</span>
-            <span class="info-value">169,000원</span>
-        </div>
-        <div class="info-row">
-            <span class="info-label">모델번호</span>
-            <span class="info-value">HV1664-001</span>
-        </div>
-        <div class="info-row">
-            <span class="info-label">출시일</span>
-            <span class="info-value">25/01/26</span>
-        </div>
+    <h2 class="section-title">사이즈</h2>
+    <div style="padding: 0 16px;">
+        <table class="size-compare-table">
+            <thead>
+                <tr>
+                    <th>KR</th>
+                    <th>US (M)</th>
+                    <th>US (W)</th>
+                    <th>UK</th>
+                    <th>EU</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>225</td>
+                    <td>3.5</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>35.5</td>
+                </tr>
+                <tr>
+                    <td>230</td>
+                    <td>4</td>
+                    <td>5.5</td>
+                    <td>3.5</td>
+                    <td>36</td>
+                </tr>
+                <tr>
+                    <td>235</td>
+                    <td>4.5</td>
+                    <td>6</td>
+                    <td>4</td>
+                    <td>36.5</td>
+                </tr>
+                <tr>
+                    <td>240</td>
+                    <td>5</td>
+                    <td>6.5</td>
+                    <td>4.5</td>
+                    <td>37.5</td>
+                </tr>
+                <tr>
+                    <td>245</td>
+                    <td>5.5</td>
+                    <td>7</td>
+                    <td>5</td>
+                    <td>38</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
-    <div style="height: 10px; background: #f4f4f4;"></div>
+    <div class="section-gap"></div>
 
-    <div class="delivery-info" style="padding-top: 20px;">
-        <h3 style="font-size: 14px; margin-bottom: 10px;">배송 정보</h3>
-        <div style="display: flex; gap: 10px; align-items: flex-start;">
+    <div style="padding: 0 16px 20px; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 10px;">
             <div
-                style="width: 40px; height: 40px; background: #e0f7fa; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">
-                🚚</div>
+                style="width: 40px; height: 40px; background: #000; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff;">
+                ✓</div> <!-- Brand Logo placeholder -->
             <div>
-                <p style="font-weight: 600; font-size: 14px;">빠른배송 <span
-                        style="font-weight: 400; color: #aaa;">5,000원</span></p>
-                <p style="font-size: 12px; color: #aaa;">지금 결제시 내일 도착 예정</p>
+                <b style="font-size: 14px;">Nike</b>
+                <span style="font-size: 12px; color: #aaa; display: block;">나이키 · 관심 31.7만</span>
             </div>
         </div>
+        <button
+            style="border: 1px solid #ddd; background: #fff; padding: 6px 12px; border-radius: 6px; font-size: 12px;">오리지널
+            랩</button>
     </div>
 
-    <div style="height: 10px; background: #f4f4f4;"></div>
-
-    <div class="size-grid">
-        <div class="size-item">
-            <div class="size-num">230</div>
-            <div class="size-price">189,000</div>
+    <!-- Sticky Footer -->
+    <div class="sticky-footer">
+        <div class="bookmark-btn">
+            <span class="bookmark-icon">🔖</span>
+            <span>관심</span>
         </div>
-        <div class="size-item">
-            <div class="size-num">235</div>
-            <div class="size-price">210,000</div>
-        </div>
-        <div class="size-item">
-            <div class="size-num">240</div>
-            <div class="size-price">195,000</div>
-        </div>
-        <div class="size-item">
-            <div class="size-num">245</div>
-            <div class="size-price">200,000</div>
-        </div>
-        <div class="size-item">
-            <div class="size-num">250</div>
-            <div class="size-price">188,000</div>
-        </div>
-        <div class="size-item">
-            <div class="size-num">255</div>
-            <div class="size-price">199,000</div>
-        </div>
-    </div>
-
-    <div style="height: 100px;"></div> <!-- Spacer for fixed footer -->
-
-    <div class="action-buttons">
-        <a href="#" class="btn-trade btn-sell">
-            판매
-            <span>160,000원</span>
+        <a href="#" class="action-btn btn-buy">
+            <span class="btn-label">구매</span>
+            <span class="btn-price">189,000원</span>
         </a>
-        <a href="#" class="btn-trade btn-buy">
-            구매
-            <span>189,000원</span>
+        <a href="#" class="action-btn btn-sell">
+            <span class="btn-label">판매</span>
+            <span class="btn-price">160,000원</span>
         </a>
     </div>
 
     <script src="script.js"></script>
+
 </body>
 
 </html>
