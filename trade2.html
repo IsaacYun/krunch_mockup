@@ -24,24 +24,10 @@
             color: #000;
             padding-bottom: 100px;
             /* Space for fixed footer */
+            overflow-x: hidden;
         }
 
-        /* Top Caution Banner */
-        .caution-banner {
-            background-color: #f9f9f9;
-            padding: 12px 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 12px;
-            color: #333;
-            border-bottom: 1px solid #eee;
-        }
-
-        .caution-banner b {
-            font-weight: 700;
-            margin-right: 4px;
-        }
+        /* Top Caution Banner REMOVED */
 
         /* Main Header */
         .trade-header {
@@ -104,7 +90,6 @@
         /* Hero Section */
         .hero-section {
             background: #f4f4f4;
-            /* Light gray bg like screenshot */
             padding: 40px 0;
             position: relative;
             display: flex;
@@ -116,14 +101,6 @@
             max-width: 300px;
             aspect-ratio: 1/1;
             object-fit: contain;
-        }
-
-        .qr-icon {
-            position: absolute;
-            bottom: 20px;
-            right: 20px;
-            font-size: 24px;
-            color: #aaa;
         }
 
         .pagination-dots {
@@ -156,6 +133,264 @@
             text-decoration: underline;
             margin-bottom: 8px;
             display: inline-block;
+            color: #000;
+        }
+
+        /* Price Area Updates */
+        .price-area {
+            margin-bottom: 30px;
+        }
+
+        .release-price {
+            font-size: 12px;
+            color: #aaa;
+            text-decoration: line-through;
+            margin-bottom: 4px;
+        }
+
+        .price-label-small {
+            font-size: 12px;
+            color: #aaa;
+            margin-right: 4px;
+            text-decoration: none;
+        }
+
+        .final-bid-label {
+            font-size: 11px;
+            color: #555;
+            display: block;
+            margin-bottom: 2px;
+            font-weight: 600;
+        }
+
+        .main-price {
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        .price-currency {
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .price-stats {
+            margin-top: 5px;
+            font-size: 12px;
+            color: #efafbc;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Tooltip Styles */
+        .tooltip-container {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .tooltip-icon {
+            width: 14px;
+            height: 14px;
+            background: #eee;
+            color: #777;
+            border-radius: 50%;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: 2px;
+        }
+
+        .tooltip-text {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.2s;
+            font-size: 11px;
+            pointer-events: none;
+        }
+
+        .tooltip-container:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
+        }
+
+
+        /* Stats Toggle REMOVED */
+
+        /* Transaction List */
+        .trans-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+        }
+
+        .trans-table th {
+            text-align: left;
+            color: #aaa;
+            font-weight: 400;
+            font-size: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .trans-table th:nth-child(2) {
+            text-align: center;
+        }
+
+        .trans-table th:nth-child(3) {
+            text-align: right;
+        }
+
+        .trans-table td {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .trans-table td:nth-child(2) {
+            text-align: center;
+            font-weight: 500;
+        }
+
+        .trans-table td:nth-child(3) {
+            text-align: right;
+            color: #aaa;
+        }
+
+        /* Highlight Top Row */
+        .top-row td {
+            color: #000;
+            font-weight: 700 !important;
+            background-color: #fcfcfc;
+        }
+
+        .top-row td:nth-child(2) {
+            color: #efafbc;
+            /* Highlight Price */
+        }
+
+        /* Dim Older Rows */
+        .dim-row td {
+            color: #ccc;
+        }
+
+        .dim-row td:nth-child(2) {
+            font-weight: 400;
+        }
+
+
+        .more-btn {
+            width: 100%;
+            padding: 12px;
+            margin-top: 15px;
+            background: #fff;
+            border: 1px solid #ddd;
+            color: #555;
+            font-size: 13px;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+
+        /* Modal Styles */
+        .history-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .history-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            margin: 15px;
+            padding: 20px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 400px;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .modal-title {
+            font-weight: 700;
+            font-size: 16px;
+        }
+
+        .close-modal-btn {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        /* Brand & Product Grid */
+        .section-gap {
+            height: 10px;
+            background: #f4f4f4;
+            margin: 20px 0;
+        }
+
+        .section-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            margin-top: 20px;
+            padding: 0 16px;
+        }
+
+        .product-specs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 0 16px 20px;
+        }
+
+        .spec-item {
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .spec-label {
+            display: block;
+            font-size: 12px;
+            color: #aaa;
+            margin-bottom: 4px;
+        }
+
+        .spec-value {
+            display: block;
+            font-size: 14px;
+            color: #000;
         }
 
         /* Footer Fixed Bar */
@@ -181,22 +416,6 @@
             text-align: center;
         }
 
-        /* Responsive Text */
-        .product-title-en {
-            font-size: 16px;
-            margin-bottom: 4px;
-            line-height: 1.4;
-            word-break: break-word;
-            /* Fix horizontal overflow */
-        }
-
-        .product-title-kr {
-            font-size: 13px;
-            color: #aaa;
-            margin-bottom: 20px;
-            word-break: break-word;
-        }
-
         /* Offer Overlay Styles */
         .offer-overlay {
             position: fixed;
@@ -213,7 +432,6 @@
         .offer-overlay.active {
             display: flex;
             background: rgba(0, 0, 0, 0.5);
-            /* Dimmed background */
         }
 
         .overlay-content {
@@ -399,194 +617,32 @@
             margin-top: auto;
             cursor: pointer;
         }
-
-        .release-price {
-            font-size: 12px;
-            color: #aaa;
-            text-decoration: line-through;
-            /* Screenshot shows release price logic usually */
-            margin-bottom: 4px;
-        }
-
-        .price-label-small {
-            font-size: 12px;
-            color: #aaa;
-            margin-right: 4px;
-            text-decoration: none;
-        }
-
-        .main-price {
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .price-currency {
-            font-size: 18px;
-            font-weight: 600;
-        }
-
-        .price-stats {
-            margin-top: 5px;
-            font-size: 12px;
-            color: #efafbc;
-            /* Pink for stats */
-        }
-
-        /* Stats Toggle Pill */
-        .stats-toggle {
-            background: #f4f4f4;
-            display: inline-flex;
-            padding: 2px;
-            border-radius: 6px;
-            margin-bottom: 20px;
-            width: 100%;
-        }
-
-        .toggle-btn {
-            flex: 1;
-            text-align: center;
-            padding: 8px 0;
-            font-size: 12px;
-            color: #aaa;
-            border-radius: 4px;
-        }
-
-        .toggle-btn.active {
-            background: #fff;
-            color: #000;
-            font-weight: 600;
-            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-        }
-
-        /* Transaction List */
-        .trans-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 13px;
-        }
-
-        .trans-table th {
-            text-align: left;
-            color: #aaa;
-            font-weight: 400;
-            font-size: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .trans-table th:nth-child(2) {
-            text-align: center;
-        }
-
-        .trans-table th:nth-child(3) {
-            text-align: right;
-        }
-
-        .trans-table td {
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .trans-table td:nth-child(2) {
-            text-align: center;
-            font-weight: 600;
-        }
-
-        .trans-table td:nth-child(3) {
-            text-align: right;
-            color: #aaa;
-        }
-
-        .more-btn {
-            width: 100%;
-            padding: 12px;
-            margin-top: 15px;
-            background: #fff;
-            border: 1px solid #ddd;
-            color: #555;
-            font-size: 13px;
-            border-radius: 12px;
-            /* Set border radius as requested? Kream uses rounded */
-            cursor: pointer;
-        }
-
-        /* Brand & Product Grid */
-        .section-gap {
-            height: 10px;
-            background: #f4f4f4;
-            margin: 20px 0;
-        }
-
-        .section-title {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 15px;
-            margin-top: 20px;
-            padding: 0 16px;
-        }
-
-        .product-specs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            padding: 0 16px 20px;
-        }
-
-        .spec-item {
-            padding: 10px 0;
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .spec-label {
-            display: block;
-            font-size: 12px;
-            color: #aaa;
-            margin-bottom: 4px;
-        }
-
-        .spec-value {
-            display: block;
-            font-size: 14px;
-            color: #000;
-        }
-
-        /* Footer */
     </style>
 </head>
 
 <body>
 
-    <!-- Top Caution Banner -->
-    <a href="#" class="caution-banner" style="text-decoration: none;">
-        <span><b>판매 거래 주의사항</b> 반드시 보유한 상품만 판매하세요.</span>
-        <span>&gt;</span>
-    </a>
-
     <!-- Header -->
     <header class="trade-header">
         <a href="index2.html" class="icon" style="text-decoration: none; color: #000;">
-            <!-- Simple Left Arrow SVG -->
             <svg viewBox="0 0 24 24">
                 <path d="M19 12H5M12 19l-7-7 7-7" />
             </svg>
         </a>
         <div class="header-icons">
             <span class="icon">
-                <!-- Search SVG -->
                 <svg viewBox="0 0 24 24">
                     <circle cx="11" cy="11" r="8"></circle>
                     <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                 </svg>
             </span>
             <span class="icon">
-                <!-- Home SVG -->
                 <svg viewBox="0 0 24 24">
                     <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
                     <polyline points="9 22 9 12 15 12 15 22"></polyline>
                 </svg>
             </span>
             <span class="icon">
-                <!-- Cart/Bag SVG -->
                 <svg viewBox="0 0 24 24">
                     <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
                     <line x1="3" y1="6" x2="21" y2="6"></line>
@@ -612,26 +668,25 @@
             <div class="dot"></div>
             <div class="dot"></div>
         </div>
-        <!-- QR Icon removed -->
     </div>
 
     <!-- Product Info -->
     <div class="product-info-container">
-        <a href="#" class="brand-link" style="color: #000; text-decoration: underline; font-weight: 700;">PEACEMINUSONE
-            &gt;</a>
+        <a href="#" class="brand-link">PEACEMINUSONE &gt;</a>
         <h1 class="product-title-en">PEACEMINUSONE Daisy Earing #1 Yellow</h1>
         <p class="product-title-kr">피스마이너스원 데이지 이어링 #1 옐로우</p>
 
         <div class="price-area">
+            <span class="final-bid-label">최종 입찰가</span>
+            <div class="main-price">923,000<span class="price-currency">원</span></div>
             <div class="release-price"><span class="price-label-small">발매가</span>380,000원</div>
-            <div class="main-price">888,888<span class="price-currency">원</span></div>
-            <div class="price-stats">▲ 508,888원 (+133.9%)</div>
-        </div>
-
-        <!-- Market Data Toggle -->
-        <div class="stats-toggle">
-            <!-- Removed 'Signed Transaction' (체결 거래) as requested, only 'Buy Bid' (구매 입찰) remains -->
-            <div class="toggle-btn active">구매 입찰</div>
+            <div class="price-stats">
+                ▲ 508,888원 (+133.9%)
+                <div class="tooltip-container">
+                    <span class="tooltip-icon">?</span>
+                    <span class="tooltip-text">해당 상품의 직전 거래가 대비 변동 가격</span>
+                </div>
+            </div>
         </div>
 
         <!-- Transaction Table -->
@@ -639,41 +694,42 @@
             <thead>
                 <tr>
                     <th>옵션</th>
-                    <th>입찰가</th> <!-- Changed to Bid Price -->
-                    <th>입찰일</th> <!-- Changed to Bid Date -->
+                    <th>입찰가</th>
+                    <th>입찰일</th>
                 </tr>
             </thead>
             <tbody>
-                <!-- Sorted High to Low -->
-                <tr>
+                <!-- Row 1: Top, Recent, Highlighted -->
+                <tr class="top-row">
                     <td>-</td>
-                    <td>920,000원</td>
+                    <td>923,000원</td>
                     <td>2일 전</td>
                 </tr>
-                <tr>
+                <!-- Older rows dimmed -->
+                <tr class="dim-row">
+                    <td>-</td>
+                    <td>920,000원</td>
+                    <td>3일 전</td>
+                </tr>
+                <tr class="dim-row">
                     <td>-</td>
                     <td>910,000원</td>
-                    <td>어제</td>
+                    <td>5일 전</td>
                 </tr>
-                <tr>
+                <tr class="dim-row">
                     <td>-</td>
                     <td>900,000원</td>
-                    <td>3시간 전</td>
+                    <td>7일 전</td>
                 </tr>
-                <tr>
+                <tr class="dim-row">
                     <td>-</td>
                     <td>895,000원</td>
-                    <td>1시간 전</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>890,000원</td>
-                    <td>10분 전</td>
+                    <td>8일 전</td>
                 </tr>
             </tbody>
         </table>
 
-        <button class="more-btn">입찰 내역 더보기</button>
+        <button class="more-btn" onclick="openHistoryModal()">입찰 내역 더보기</button>
     </div>
 
     <div class="section-gap"></div>
@@ -700,8 +756,6 @@
 
     <div class="section-gap"></div>
 
-    <!-- Size Grid Removed from here -->
-
     <div style="padding: 0 16px 20px; display: flex; align-items: center; justify-content: space-between;">
         <div style="display: flex; align-items: center; gap: 10px;">
             <div
@@ -720,6 +774,62 @@
     <!-- Bottom Fixed Bar -->
     <div class="fixed-bottom-bar">
         <button id="setOfferBtn" class="set-offer-btn">Set Offer</button>
+    </div>
+
+    <!-- History Modal -->
+    <div id="historyModal" class="history-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="modal-title">입찰 내역</span>
+                <button class="close-modal-btn" onclick="closeHistoryModal()">×</button>
+            </div>
+            <table class="trans-table">
+                <thead>
+                    <tr>
+                        <th>옵션</th>
+                        <th>입찰가</th>
+                        <th>입찰일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="top-row">
+                        <td>-</td>
+                        <td>923,000원</td>
+                        <td>2일 전</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>920,000원</td>
+                        <td>3일 전</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>910,000원</td>
+                        <td>5일 전</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>900,000원</td>
+                        <td>7일 전</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>895,000원</td>
+                        <td>8일 전</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>890,000원</td>
+                        <td>10일 전</td>
+                    </tr>
+                    <tr>
+                        <td>-</td>
+                        <td>880,000원</td>
+                        <td>12일 전</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <!-- Set Offer Overlay (Hidden by default) -->
@@ -764,7 +874,7 @@
                 <div class="offer-stats">
                     <div class="stat-box">
                         <label>Top Offer</label>
-                        <p>KRW 1,888,888</p>
+                        <p>KRW 1,923,000</p>
                     </div>
                     <div class="stat-box">
                         <label>Offered Person</label>
@@ -801,7 +911,20 @@
     </div>
 
     <script src="script.js"></script>
-
+    <script>
+        function openHistoryModal() {
+            document.getElementById('historyModal').classList.add('active');
+        }
+        function closeHistoryModal() {
+            document.getElementById('historyModal').classList.remove('active');
+        }
+        // Close if clicked outside
+        document.getElementById('historyModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeHistoryModal();
+            }
+        });
+    </script>
 </body>
 
 </html>
