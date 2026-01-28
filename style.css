@@ -1357,3 +1357,30 @@ nav {
     border-radius: 8px;
     /* Slightly rounded */
 }
+
+/* Trade Card Specifics - Reduced Height */
+.trade-card {
+    aspect-ratio: 1/1.1;
+    /* Reduced from default */
+    padding: 10px;
+    gap: 5px;
+}
+
+.trade-card img {
+    max-height: 60%;
+    width: 90%;
+}
+
+.trade-info {
+    margin-top: 0 !important;
+}
+
+.trade-info .name {
+    margin-bottom: 2px !important;
+}
+
+@media (max-width: 768px) {
+    .trade-card {
+        aspect-ratio: 1/1.05;
+    }
+}
