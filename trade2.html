@@ -599,7 +599,7 @@
     <!-- Sticky Navigation -->
     <nav class="nav-tabs">
         <span class="nav-tab active">상품</span>
-        <span class="nav-tab">리뷰 0</span>
+        <span class="nav-tab">리뷰 4</span>
         <span class="nav-tab">상세</span>
         <span class="nav-tab">추천</span>
     </nav>
@@ -612,12 +612,13 @@
             <div class="dot"></div>
             <div class="dot"></div>
         </div>
-        <div class="qr-icon">[ o ]</div>
+        <!-- QR Icon removed -->
     </div>
 
     <!-- Product Info -->
     <div class="product-info-container">
-        <a href="#" class="brand-link">PEACEMINUSONE &gt;</a>
+        <a href="#" class="brand-link" style="color: #000; text-decoration: underline; font-weight: 700;">PEACEMINUSONE
+            &gt;</a>
         <h1 class="product-title-en">PEACEMINUSONE Daisy Earing #1 Yellow</h1>
         <p class="product-title-kr">피스마이너스원 데이지 이어링 #1 옐로우</p>
 
@@ -629,9 +630,8 @@
 
         <!-- Market Data Toggle -->
         <div class="stats-toggle">
-            <!-- Removed 'Signed Transaction' (체결 거래) as requested -->
-            <div class="toggle-btn active">판매 입찰</div>
-            <div class="toggle-btn">구매 입찰</div>
+            <!-- Removed 'Signed Transaction' (체결 거래) as requested, only 'Buy Bid' (구매 입찰) remains -->
+            <div class="toggle-btn active">구매 입찰</div>
         </div>
 
         <!-- Transaction Table -->
@@ -639,25 +639,16 @@
             <thead>
                 <tr>
                     <th>옵션</th>
-                    <th>거래가</th>
-                    <th>입찰일</th> <!-- Changed from Transaction Date to Bid Date -->
+                    <th>입찰가</th> <!-- Changed to Bid Price -->
+                    <th>입찰일</th> <!-- Changed to Bid Date -->
                 </tr>
             </thead>
             <tbody>
+                <!-- Sorted High to Low -->
                 <tr>
                     <td>-</td>
-                    <td>890,000원</td>
-                    <td>10분 전</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>895,000원</td>
-                    <td>1시간 전</td>
-                </tr>
-                <tr>
-                    <td>-</td>
-                    <td>900,000원</td>
-                    <td>3시간 전</td>
+                    <td>920,000원</td>
+                    <td>2일 전</td>
                 </tr>
                 <tr>
                     <td>-</td>
@@ -666,8 +657,18 @@
                 </tr>
                 <tr>
                     <td>-</td>
-                    <td>920,000원</td>
-                    <td>2일 전</td>
+                    <td>900,000원</td>
+                    <td>3시간 전</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>895,000원</td>
+                    <td>1시간 전</td>
+                </tr>
+                <tr>
+                    <td>-</td>
+                    <td>890,000원</td>
+                    <td>10분 전</td>
                 </tr>
             </tbody>
         </table>
@@ -755,7 +756,7 @@
                     <label>Your Offer</label>
                     <div class="price-input-area">
                         <span class="currency">KRW</span>
-                        <input type="text" class="offer-input" value="888,888,888">
+                        <input type="text" id="offerInput" class="offer-input" value="888,888,888">
                     </div>
                     <div class="white-line"></div>
                 </div>
