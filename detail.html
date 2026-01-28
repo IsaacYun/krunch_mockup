@@ -11,7 +11,7 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 
 <body>
@@ -85,17 +85,16 @@
         </section>
 
         <!-- Set Offer Overlay (Hidden by default) -->
-        <!-- Set Offer Overlay (Hidden by default) -->
         <div id="offerOverlay" class="offer-overlay" style="justify-content: flex-end;">
+            <!-- Overlay Content: 70% Height from Bottom -->
             <div class="overlay-content"
                 style="background: transparent; height: 70vh; margin-top:0; min-height: 0; display: flex; flex-direction: column;">
-
                 <div class="offer-tabs" id="dragArea"
                     style="flex-direction: column; align-items: center; padding: 10px; color: #fff; background: #000; border-radius: 20px 20px 0 0; cursor: grab;">
                     <div class="drag-handle"
                         style="width: 40px; height: 5px; background: #555; border-radius: 5px; margin-bottom: 10px;">
                     </div>
-                    <span style="font-size: 16px; font-weight: 600;">Set Offer</span>
+                    <span style="font-size: 16px; font-weight: 600;">입찰</span>
                 </div>
 
                 <div class="offer-main">
@@ -103,16 +102,18 @@
                         <label>Your Offer</label>
                         <div class="price-input-area">
                             <span class="currency">KRW</span>
-                            <input type="text" class="offer-input" id="offerInput" value="888,888,888">
+                            <input type="text" id="offerInput" class="offer-input" value="1,000,000">
                         </div>
                         <div class="white-line"></div>
-                        <!-- Helper Text -->
+
+                        <!-- New Helper Text -->
                         <div style="margin-bottom: 20px;">
                             <p style="font-size: 13px; color: #aaa; margin-bottom: 4px;">현재 입찰가 <span
                                     style="color: #fff; font-weight: 700;">923,000원</span></p>
                             <p style="font-size: 12px; color: #555;">현재 입찰가보다 더 높은 가격으로 참여할 수 있습니다</p>
                         </div>
-                        <!-- Error Message -->
+
+                        <!-- Error Message (Hidden by default) -->
                         <p id="offerError"
                             style="color: #ff6b6b; font-size: 12px; display: none; margin-top: -10px; margin-bottom: 20px;">
                             더 높은 가격을 입력해주세요.
@@ -122,7 +123,7 @@
                     <div class="offer-stats">
                         <div class="stat-box">
                             <label>Top Offer</label>
-                            <p>KRW 1,888,888</p>
+                            <p>KRW 1,923,000</p>
                         </div>
                         <div class="stat-box">
                             <label>Offered Person</label>
@@ -131,29 +132,29 @@
                     </div>
 
                     <div class="timer-section">
-                        <label>Until Expiration</label>
+                        <label>경매 마감</label> <!-- Renamed from Until Expiration -->
                         <div class="timer-grid">
                             <div class="timer-item">
-                                <span class="num">15</span>
+                                <span class="num" id="days">00</span>
                                 <span class="unit">Day</span>
                             </div>
                             <div class="timer-item">
-                                <span class="num">02</span>
+                                <span class="num" id="hours">00</span>
                                 <span class="unit">Hour</span>
                             </div>
                             <div class="timer-item">
-                                <span class="num">34</span>
+                                <span class="num" id="mins">00</span>
                                 <span class="unit">Min</span>
                             </div>
                             <div class="timer-item">
-                                <span class="num">19</span>
+                                <span class="num" id="secs">00</span>
                                 <span class="unit">Sec</span>
                             </div>
                         </div>
                         <p class="timer-date">2025-Sep-31</p>
                     </div>
 
-                    <button id="submitOfferBtn" class="set-offer-action-btn">입찰하기</button>
+                    <button class="set-offer-action-btn" id="submitOfferBtn">입찰하기</button>
                 </div>
             </div>
         </div>
