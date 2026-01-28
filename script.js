@@ -219,12 +219,8 @@ window.addEventListener('load', () => {
         submitBtn.addEventListener('click', () => {
             const rawValue = offerInput.value.replace(/[^\d]/g, '');
             if (parseInt(rawValue) > CURRENT_BID) {
-                alert('Offer Submitted!');
-                offerOverlay.classList.remove('active');
-                setTimeout(() => {
-                    offerOverlay.style.display = '';
-                }, 300);
-                document.body.style.overflow = '';
+                // Success - Redirect to complete2.html
+                window.location.href = 'complete2.html';
             } else {
                 // Trigger error visual
                 offerError.style.display = 'block';
