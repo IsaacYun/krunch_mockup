@@ -123,16 +123,16 @@ window.addEventListener('load', () => {
 
     function updateTimer() {
         const daysEl = document.getElementById('days');
-        if (!daysEl) return;
+        if (!daysEl) return; // Exit if elements don't exist
 
         const now = new Date().getTime();
         const distance = targetDate - now;
 
         if (distance < 0) {
-            document.getElementById('days').innerText = "00";
-            document.getElementById('hours').innerText = "00";
-            document.getElementById('mins').innerText = "00";
-            document.getElementById('secs').innerText = "00";
+            if (daysEl) daysEl.innerText = "00";
+            if (document.getElementById('hours')) document.getElementById('hours').innerText = "00";
+            if (document.getElementById('mins')) document.getElementById('mins').innerText = "00";
+            if (document.getElementById('secs')) document.getElementById('secs').innerText = "00";
             return;
         }
 
@@ -141,10 +141,10 @@ window.addEventListener('load', () => {
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-        document.getElementById('days').innerText = days.toString().padStart(2, '0');
-        document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
-        document.getElementById('mins').innerText = minutes.toString().padStart(2, '0');
-        document.getElementById('secs').innerText = seconds.toString().padStart(2, '0');
+        if (daysEl) daysEl.innerText = days.toString().padStart(2, '0');
+        if (document.getElementById('hours')) document.getElementById('hours').innerText = hours.toString().padStart(2, '0');
+        if (document.getElementById('mins')) document.getElementById('mins').innerText = minutes.toString().padStart(2, '0');
+        if (document.getElementById('secs')) document.getElementById('secs').innerText = seconds.toString().padStart(2, '0');
     }
 
     setInterval(updateTimer, 1000);
