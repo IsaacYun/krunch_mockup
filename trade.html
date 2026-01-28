@@ -32,6 +32,32 @@
 
         /* Top Caution Banner REMOVED */
 
+        /* Motion Toast */
+        .motion-toast {
+            position: fixed;
+            top: 60px;
+            /* Below header */
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            z-index: 9999;
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+            pointer-events: none;
+            width: 90%;
+            max-width: 300px;
+            text-align: center;
+        }
+
+        .motion-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(10px);
+        }
+
         /* Main Header */
         .trade-header {
             display: flex;
@@ -671,6 +697,22 @@
             </span>
         </div>
     </header>
+
+    <div id="motionToast" class="motion-toast">
+        지금 279명이 이 제품의 입찰을 고민하고 있어요
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const toast = document.getElementById('motionToast');
+            setTimeout(() => {
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                }, 2000); // Disappear after 2 seconds
+            }, 500); // Delay slightly on load
+        });
+    </script>
 
     <!-- Sticky Navigation -->
     <nav class="nav-tabs">
