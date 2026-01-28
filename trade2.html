@@ -852,25 +852,9 @@
 
     <!-- Set Offer Overlay (Hidden by default) -->
     <div id="offerOverlay" class="offer-overlay">
-        <div class="overlay-content">
-            <header class="overlay-header">
-                <button class="close-overlay">←</button>
-                <div class="header-actions">
-                    <button class="action-btn">•••</button>
-                    <button class="action-btn like-btn">♥ 저장</button>
-                </div>
-            </header>
+        <!-- Removed Header and Product Summary as requested -->
 
-            <div class="product-summary">
-                <img src="assets/images/daisy_earring_1769133898605.png" alt="Daisy">
-                <div class="summary-text">
-                    <span class="label">item code</span>
-                    <p>2025-Aug-8</p>
-                    <p>G-DRAGON World Tour [Übermensch] in Hong Kong</p>
-                    <p>PEACEMINUSONE Daisy Earing #1 Yellow</p>
-                </div>
-            </div>
-
+        <div class="overlay-content" style="background: transparent; justify-content: flex-end;">
             <div class="offer-tabs" id="dragArea"
                 style="flex-direction: column; align-items: center; padding: 10px; color: #fff; background: #000; border-radius: 20px 20px 0 0; cursor: grab;">
                 <div class="drag-handle"
@@ -884,9 +868,22 @@
                     <label>Your Offer</label>
                     <div class="price-input-area">
                         <span class="currency">KRW</span>
-                        <input type="text" id="offerInput" class="offer-input" value="888,888,888">
+                        <input type="text" id="offerInput" class="offer-input" value="1,000,000">
                     </div>
                     <div class="white-line"></div>
+
+                    <!-- New Helper Text -->
+                    <div style="margin-bottom: 20px;">
+                        <p style="font-size: 13px; color: #aaa; margin-bottom: 4px;">현재 입찰가 <span
+                                style="color: #fff; font-weight: 700;">923,000원</span></p>
+                        <p style="font-size: 12px; color: #555;">현재 입찰가보다 더 높은 가격으로 참여할 수 있습니다</p>
+                    </div>
+
+                    <!-- Error Message (Hidden by default) -->
+                    <p id="offerError"
+                        style="color: #ff6b6b; font-size: 12px; display: none; margin-top: -10px; margin-bottom: 20px;">
+                        더 높은 가격을 입력해주세요.
+                    </p>
                 </div>
 
                 <div class="offer-stats">
@@ -901,29 +898,29 @@
                 </div>
 
                 <div class="timer-section">
-                    <label>Until Expiration</label>
+                    <label>경매 마감</label> <!-- Renamed from Until Expiration -->
                     <div class="timer-grid">
                         <div class="timer-item">
-                            <span class="num">04</span>
+                            <span class="num" id="days">00</span>
                             <span class="unit">Day</span>
                         </div>
                         <div class="timer-item">
-                            <span class="num">12</span>
+                            <span class="num" id="hours">00</span>
                             <span class="unit">Hour</span>
                         </div>
                         <div class="timer-item">
-                            <span class="num">35</span>
+                            <span class="num" id="mins">00</span>
                             <span class="unit">Min</span>
                         </div>
                         <div class="timer-item">
-                            <span class="num">19</span>
+                            <span class="num" id="secs">00</span>
                             <span class="unit">Sec</span>
                         </div>
                     </div>
                     <p class="timer-date">2025-Sep-31</p>
                 </div>
 
-                <button class="set-offer-action-btn">입찰하기</button>
+                <button class="set-offer-action-btn" id="submitOfferBtn">입찰하기</button>
             </div>
         </div>
     </div>

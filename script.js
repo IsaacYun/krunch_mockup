@@ -86,30 +86,42 @@
 // Input Formatting
 // Main Logic - Waits for window load to ensure all elements are present
 window.addEventListener('load', () => {
-    // Input Formatting
+    // Input Formatting & Validation
     const offerInput = document.getElementById('offerInput');
+    const offerError = document.getElementById('offerError');
+    const submitBtn = document.getElementById('submitOfferBtn');
+    const CURRENT_BID = 923000; // Fixed Current Bid as per request
 
     if (offerInput) {
         offerInput.addEventListener('input', (e) => {
             // Remove non-digit characters
-            let value = e.target.value.replace(/[^\d]/g, '');
+            let rawValue = e.target.value.replace(/[^\d]/g, '');
 
             // Format with commas
-            if (value) {
-                value = parseInt(value).toLocaleString();
-            }
+            if (rawValue) {
+                let numValue = parseInt(rawValue);
+                e.target.value = numValue.toLocaleString();
 
-            e.target.value = value;
+                // Validation Logic
+                if (numValue <= CURRENT_BID) {
+                    offerError.style.display = 'block';
+                    offerError.innerText = '더 높은 가격을 입력해주세요.'; // "Please enter a higher price"
+                } else {
+                    offerError.style.display = 'none';
+                }
+            } else {
+                e.target.value = '';
+                offerError.style.display = 'none';
+            }
         });
     }
 
-    // Countdown Timer logic
-    // Countdown Timer logic: starts from 2d 22h 30m 27s
-    const duration = (2 * 24 * 60 * 60 * 1000) + (22 * 60 * 60 * 1000) + (30 * 60 * 1000) + (27 * 1000);
+    // Countdown Timer logic (Mock: Auction Ends in 4 days)
+    // 2025-Sep-31 does not exist, using Oct 1 for demo or just delta
+    const duration = (4 * 24 * 60 * 60 * 1000) + (12 * 60 * 60 * 1000);
     const targetDate = new Date().getTime() + duration;
 
     function updateTimer() {
-        // Safe check for elements
         const daysEl = document.getElementById('days');
         if (!daysEl) return;
 
@@ -117,7 +129,6 @@ window.addEventListener('load', () => {
         const distance = targetDate - now;
 
         if (distance < 0) {
-            // Expired
             document.getElementById('days').innerText = "00";
             document.getElementById('hours').innerText = "00";
             document.getElementById('mins').innerText = "00";
@@ -137,115 +148,88 @@ window.addEventListener('load', () => {
     }
 
     setInterval(updateTimer, 1000);
-    updateTimer(); // Initial call
-
-    // Mobile Menu Logic
-    const hamburger = document.querySelector('.hamburger-menu');
-    const mobileMenu = document.querySelector('.mobile-menu-overlay');
-
-    if (hamburger && mobileMenu) {
-        hamburger.addEventListener('click', () => {
-            mobileMenu.classList.toggle('active');
-            // Animate hamburger to X (Optional simple toggle)
-            const spans = hamburger.querySelectorAll('span');
-            if (mobileMenu.classList.contains('active')) {
-                spans[0].style.transform = "rotate(45deg) translate(5px, 5px)";
-                spans[1].style.opacity = "0";
-                spans[2].style.transform = "rotate(-45deg) translate(5px, -5px)";
-            } else {
-                spans[0].style.transform = "none";
-                spans[1].style.opacity = "1";
-                spans[2].style.transform = "none";
-            }
-        });
-    }
+    updateTimer();
 
     // Offer Overlay Logic
     const setOfferBtn = document.getElementById('setOfferBtn');
     const offerOverlay = document.getElementById('offerOverlay');
-    const closeOverlayBtn = document.querySelector('.close-overlay');
-    const setOfferActionBtn = document.querySelector('.set-offer-action-btn');
+    // Note: closeOverlayBtn removed from HTML, so closing relies on Drag or Logic
+    // We can add a function to close if needed, but user didn't specify close button behavior besides drag
 
     if (setOfferBtn && offerOverlay) {
-        console.log('Set Offer Button and Overlay found');
         setOfferBtn.addEventListener('click', () => {
-            console.log('Set Offer Button Clicked');
             offerOverlay.classList.add('active');
-            offerOverlay.style.display = 'flex'; // Force flex display
+            offerOverlay.style.display = 'flex';
             document.body.style.overflow = 'hidden';
-            console.log('Overlay active class added');
-        });
-    } else {
-        console.error('Set Offer Button or Overlay NOT found', { setOfferBtn, offerOverlay });
-    }
 
-    if (closeOverlayBtn && offerOverlay) {
-        closeOverlayBtn.addEventListener('click', () => {
-            offerOverlay.classList.remove('active');
-            offerOverlay.style.display = ''; // Revert to stylesheet rule
-            document.body.style.overflow = '';
+            // Reset input to a valid starting value or keep previous?
+            // User screenshot showed 888,888,888. Let's set to something valid or leave as is.
+            // HTML value=1,000,000 which is > 923,000.
         });
     }
 
-    // Drag Gesture Logic for Bottom Sheet
+    // Drag Gesture Logic
     const dragArea = document.getElementById('dragArea');
-    const overlay = document.getElementById('offerOverlay');
-    let startY = 0;
-    let currentY = 0;
-    let isDragging = false;
+    if (dragArea && offerOverlay) {
+        let startY = 0;
+        let currentY = 0;
+        let isDragging = false;
 
-    if (dragArea && overlay) {
-        // Prevent default touch actions (scrolling) on the drag handle
         dragArea.addEventListener('touchstart', (e) => {
             startY = e.touches[0].clientY;
             isDragging = true;
-            overlay.style.transition = 'none'; // Disable transition for direct follow
+            offerOverlay.style.transition = 'none';
         }, { passive: false });
 
         dragArea.addEventListener('touchmove', (e) => {
             if (!isDragging) return;
-            e.preventDefault(); // Stop page scroll while dragging handle
-
+            e.preventDefault();
             currentY = e.touches[0].clientY;
             const deltaY = currentY - startY;
-
-            // Only allow dragging DOWN (positive delta)
             if (deltaY > 0) {
-                overlay.style.transform = `translateY(${deltaY}px)`;
+                // Moving the whole overlay content?
+                // Visual trick: translateY on the overlay content wrapper if we want to slide it down
+                // Currently overlay is fixed full screen.
+                // We should probably translate the .overlay-content inside it?
+                // For simplicity, translating the whole overlay container might reveal background if it has one.
+                // Since background is transparent (per CSS edit), this should work visually.
+                offerOverlay.style.transform = `translateY(${deltaY}px)`;
             }
         }, { passive: false });
 
         dragArea.addEventListener('touchend', () => {
             if (!isDragging) return;
             isDragging = false;
-
             const deltaY = currentY - startY;
-            const threshold = 150; // Drag distance to close
-
-            // Restore transition for smooth snap
-            overlay.style.transition = 'transform 0.3s ease-out';
-
-            if (deltaY > threshold) {
-                // Close Sheet
-                overlay.classList.remove('active');
+            offerOverlay.style.transition = 'transform 0.3s ease-out';
+            if (deltaY > 150) {
+                offerOverlay.classList.remove('active');
                 setTimeout(() => {
-                    overlay.style.display = '';
-                    overlay.style.transform = ''; // Reset transform
-                }, 300); // Wait for animation
+                    offerOverlay.style.display = '';
+                    offerOverlay.style.transform = '';
+                }, 300);
                 document.body.style.overflow = '';
             } else {
-                // Snap Back to Open
-                overlay.style.transform = 'translateY(0)';
+                offerOverlay.style.transform = 'translateY(0)';
             }
         });
     }
 
-    if (setOfferActionBtn) {
-        setOfferActionBtn.addEventListener('click', () => {
-            alert('Offer Set!');
-            overlay.classList.remove('active');
-            overlay.style.display = '';
-            document.body.style.overflow = '';
+    if (submitBtn) {
+        submitBtn.addEventListener('click', () => {
+            const rawValue = offerInput.value.replace(/[^\d]/g, '');
+            if (parseInt(rawValue) > CURRENT_BID) {
+                alert('Offer Submitted!');
+                offerOverlay.classList.remove('active');
+                setTimeout(() => {
+                    offerOverlay.style.display = '';
+                }, 300);
+                document.body.style.overflow = '';
+            } else {
+                // Trigger error visual
+                offerError.style.display = 'block';
+                // Shake animation optional
+            }
         });
     }
 });
