@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Krunch - Jenny Ruby Necklace</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Detail Page Header -->
+    <header class="detail-header">
+        <a href="index.html" class="back-btn">←</a>
+        <div class="header-actions">
+            <button class="action-btn">•••</button>
+            <button class="action-btn like-btn">♥ 저장</button>
+        </div>
+    </header>
+
+    <main class="container detail-container">
+        <!-- Main Product Image -->
+        <section class="detail-hero">
+            <div class="image-wrapper">
+                <img src="assets/images/daisy_earring_1769133898605.png" alt="Daisy Earing" class="detail-main-img">
+            </div>
+        </section>
+
+        <!-- Product Info -->
+        <section class="detail-info">
+            <div class="info-row code-row">
+                <span class="label">item code</span>
+                <div class="content">
+                    <p class="date">2025-Aug-8</p>
+                    <p class="desc">G-DRAGON World Tour [Übermensch] in Hong Kong</p>
+                    <p class="name">PEACEMINUSONE Daisy Earing #1 Yellow</p>
+                </div>
+            </div>
+
+            <!-- G-Dragon Section -->
+            <div class="g-dragon-section">
+                <h3 class="section-title">G-dragon</h3>
+                <div class="related-items">
+                    <div class="related-item">
+                        <img src="assets/images/peaceminusone_cap_1769133914883.png" alt="Cap">
+                    </div>
+                    <div class="related-item">
+                        <img src="assets/images/flower_bracelet_1769133929156.png" alt="Bracelet">
+                    </div>
+                    <div class="related-item">
+                        <img src="assets/images/denim_jacket_1769133948249.png" alt="Jacket">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Product Specs -->
+            <div class="specs-list">
+                <div class="spec-row">
+                    <span class="spec-label">발매일</span>
+                    <span class="spec-value">2024-08-23</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">계절</span>
+                    <span class="spec-value">Fall/Winter 2024</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">SKU</span>
+                    <span class="spec-value">99HAA26B WHITE</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">주요 컬러</span>
+                    <span class="spec-value">White</span>
+                </div>
+                <div class="spec-row">
+                    <span class="spec-label">메인 컬러</span>
+                    <span class="spec-value link">White</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Set Offer Overlay (Hidden by default) -->
+        <div id="offerOverlay" class="offer-overlay">
+            <div class="overlay-content">
+                <header class="overlay-header">
+                    <button class="close-overlay">←</button>
+                    <div class="header-actions">
+                        <button class="action-btn">•••</button>
+                        <button class="action-btn like-btn">♥ 저장</button>
+                    </div>
+                </header>
+
+                <div class="product-summary">
+                    <img src="assets/images/daisy_earring_1769133898605.png" alt="Daisy">
+                    <div class="summary-text">
+                        <span class="label">item code</span>
+                        <p>2025-Aug-8</p>
+                        <p>G-DRAGON World Tour...</p>
+                        <p>PEACEMINUSONE Daisy...</p>
+                    </div>
+                </div>
+
+                <div class="offer-tabs" id="dragArea"
+                    style="flex-direction: column; align-items: center; padding: 10px; color: #fff; background: #000; border-radius: 20px 20px 0 0; cursor: grab;">
+                    <div class="drag-handle"
+                        style="width: 40px; height: 5px; background: #555; border-radius: 5px; margin-bottom: 10px;">
+                    </div>
+                    <span style="font-size: 16px; font-weight: 600;">Set Offer</span>
+                </div>
+
+                <div class="offer-main">
+                    <div class="input-group">
+                        <label>Your Offer</label>
+                        <div class="price-input-area">
+                            <span class="currency">KRW</span>
+                            <input type="text" class="offer-input" value="888,888,888">
+                        </div>
+                        <div class="white-line"></div>
+                    </div>
+
+                    <div class="offer-stats">
+                        <div class="stat-box">
+                            <label>Top Offer</label>
+                            <p>KRW 1,888,888</p>
+                        </div>
+                        <div class="stat-box">
+                            <label>Offered Person</label>
+                            <p>3,882</p>
+                        </div>
+                    </div>
+
+                    <div class="timer-section">
+                        <label>Until Expiration</label>
+                        <div class="timer-grid">
+                            <div class="timer-item">
+                                <span class="num">15</span>
+                                <span class="unit">Day</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="num">02</span>
+                                <span class="unit">Hour</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="num">34</span>
+                                <span class="unit">Min</span>
+                            </div>
+                            <div class="timer-item">
+                                <span class="num">19</span>
+                                <span class="unit">Sec</span>
+                            </div>
+                        </div>
+                        <p class="timer-date">2025-Sep-31</p>
+                    </div>
+
+                    <button class="set-offer-action-btn">입찰하기</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Bottom Fixed Bar -->
+    <div class="fixed-bottom-bar">
+        <button id="setOfferBtn" class="set-offer-btn">Set Offer</button>
+    </div>
+
+    <!-- Business Info Footer -->
+    <footer class="business-footer">
+        <p><strong>(주)크런치</strong> | 대표: 김크런치</p>
+        <p>사업자등록번호: 123-45-67890 | 통신판매업신고: 2025-서울강남-0000</p>
+        <p>주소: 서울특별시 강남구 테헤란로 123, 크런치타워 8층</p>
+        <p>고객센터: 1588-0000 (평일 09:00 - 18:00)</p>
+        <p>이메일: help@krunch.co.kr</p>
+        <div class="footer-links">
+            <a href="#">이용약관</a>
+            <a href="#">개인정보처리방침</a>
+            <a href="#">사업자정보확인</a>
+        </div>
+        <p style="margin-top: 20px; color: #333;">© 2025 Krunch Corp. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

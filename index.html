@@ -4,140 +4,144 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Krunch - Jenny Ruby Necklace</title>
+    <title>Krunch - Home</title>
+    <meta name="robots" content="noindex, nofollow">
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <!-- Cache Busting -->
+    <link rel="stylesheet" href="style.css?v=2">
 </head>
 
-<body>
+<body class="home-page">
     <header>
         <nav>
             <div class="nav-left">
-                <img src="assets/logo.png" alt="Krunch" style="height: 24px; margin-right: 30px;">
-                <a href="#" class="nav-link active">shop</a>
-                <a href="#" class="nav-link">style</a>
-                <a href="#" class="nav-link">verify</a>
+                <a href="index.html"><img src="assets/logo.png" alt="Krunch"
+                        style="height: 24px; margin-right: 30px;"></a>
+                <div class="desktop-nav">
+                    <a href="detail.html" class="nav-link">shop</a>
+                    <a href="#" class="nav-link">style</a>
+                    <a href="#" class="nav-link">verify</a>
+                </div>
             </div>
             <div class="nav-right">
                 <a href="#" class="nav-link uppercase">MY</a>
+                <button class="hamburger-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
             </div>
         </nav>
+        <div class="mobile-menu-overlay">
+            <a href="detail.html" class="nav-link">shop</a>
+            <a href="#" class="nav-link">style</a>
+            <a href="#" class="nav-link">verify</a>
+        </div>
     </header>
 
-    <main class="container">
-        <!-- Left Column: Product Image & Title -->
-        <section class="product-hero">
-            <div class="hero-header">
-                <div class="item-code-label">Item-code :</div>
-                <h1 class="product-title">JENNY [ The Ruby Experience ] in Seoul</h1>
-                <div class="product-date">2025-Mar-15</div>
+    <main class="container home-container">
+        <!-- Hero Section -->
+        <section class="home-hero">
+            <div class="hero-left">
+                <img src="assets/images/model_1.png" alt="Just Dropped Model">
+                <span class="hero-text text-just">just</span>
             </div>
-
-            <div class="image-container">
-                <img src="assets/images/ruby_necklace.png" alt="Ruby Diamond Necklace" class="main-product-image">
+            <div class="hero-right">
+                <div class="hero-meta">
+                    <span class="item-code">Item-code :</span>
+                    <span class="item-desc">G-DRAGON 2025 World Tour [Übermensch] in Hong Kong</span>
+                    <span class="item-date">2025-Aug-8</span>
+                </div>
+                <!-- Hero Image (Black Background) -->
+                <img src="assets/images/ruby_necklace_on_black_1769131511544.png" alt="Just Dropped Item"
+                    class="hero-item-img">
+                <span class="hero-text text-dropped">dropped</span>
             </div>
+        </section>
 
-            <div class="product-footer">
-                <p>Mark Cruz - RUBY Diamond Necklace <em>customized for JENNY</em></p>
+        <!-- Grid Section -->
+        <section class="home-grid">
+            <a href="detail.html" class="grid-card">
+                <span class="card-title">all</span>
+                <img src="assets/images/all_collection_isolated_1769132564078.png" alt="All">
+                <span class="card-label">10,000+</span>
+            </a>
+            <a href="detail.html" class="grid-card">
+                <span class="card-title">just dropped</span>
+                <!-- Grid Image (White Background) -->
+                <img src="assets/images/ruby_necklace_transparent_1769131409071.png" alt="Just Dropped">
+                <span class="card-label">2025 August</span>
+            </a>
+            <a href="detail.html" class="grid-card">
+                <span class="card-title">apparel</span>
+                <img src="assets/images/apparel_isolated_1769132528209.png" alt="Apparel">
+                <span class="card-label">more +</span>
+            </a>
+            <a href="detail.html" class="grid-card">
+                <span class="card-title">sneakers</span>
+                <img src="assets/images/sneakers_isolated_1769132548302.png" alt="Sneakers">
+                <span class="card-label">more +</span>
+            </a>
+            <a href="detail.html" class="grid-card">
+                <span class="card-title">accessories</span>
+                <img src="assets/images/accessories_transparent_1769131457295.png" alt="Accessories">
+                <span class="card-label">more +</span>
+            </a>
+            <a href="detail.html" class="grid-card">
+                <span class="card-title">artwork</span>
+                <img src="assets/images/artwork_transparent_1769131471955.png" alt="Artwork">
+                <span class="card-label">more +</span>
+            </a>
+        </section>
+
+        <!-- Second-hand Trade Section -->
+        <section class="trade-section" style="margin-top: 40px; padding: 0 15px;">
+            <div class="section-header"
+                style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+                <h2 style="font-family: var(--font-heading); font-style: italic; font-size: 24px; color: #fff;">trade
+                </h2>
+                <a href="trade2.html" style="color: #aaa; font-size: 14px; text-decoration: none;">more +</a>
+            </div>
+            <div class="trade-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;">
+                <!-- Trade Item 1 -->
+                <a href="trade2.html" class="grid-card trade-card">
+                    <span class="card-status"
+                        style="position: absolute; top: 10px; left: 10px; background: #00ff00; color: #000; font-size: 10px; padding: 2px 5px; font-weight: bold;">LIVE</span>
+                    <img src="assets/images/sneakers_isolated_1769132548302.png" alt="Trade Item">
+                    <div class="trade-info" style="width: 100%; text-align: left; margin-top: 10px;">
+                        <span class="brand" style="display: block; font-size: 10px; color: #aaa;">Nike</span>
+                        <span class="name"
+                            style="display: block; font-size: 12px; font-weight: 600; color: #000; margin-bottom: 5px;">Dunk
+                            Low Retro Black</span>
+                        <span class="price"
+                            style="display: block; font-size: 14px; font-weight: 700; color: #000;">145,000</span>
+                    </div>
+                </a>
+                <!-- Trade Item 2 -->
+                <a href="trade2.html" class="grid-card trade-card">
+                    <img src="assets/images/ruby_necklace_transparent_1769131409071.png" alt="Trade Item">
+                    <div class="trade-info" style="width: 100%; text-align: left; margin-top: 10px;">
+                        <span class="brand" style="display: block; font-size: 10px; color: #aaa;">PEACEMINUSONE</span>
+                        <span class="name"
+                            style="display: block; font-size: 12px; font-weight: 600; color: #000; margin-bottom: 5px;">Daisy
+                            Necklace</span>
+                        <span class="price"
+                            style="display: block; font-size: 14px; font-weight: 700; color: #000;">3,200,000</span>
+                    </div>
+                </a>
             </div>
         </section>
 
-        <!-- Right Column: Details & Action -->
-        <section class="product-details">
-            <!-- Info Block -->
-            <div class="info-block">
-                <div class="info-item">
-                    <span class="label">Artist</span>
-                    <span class="value">JENNY</span>
-                </div>
-                <div class="info-item">
-                    <span class="label">Dressed Date</span>
-                    <span class="value">2025-Mar-15</span>
-                </div>
+        <div class="search-bar-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" class="search-input" placeholder="Search">
+        </div>
 
-                <div class="info-item description">
-                    <span class="label">Description</span>
-                    <p class="value-text">
-                        When JENNY performed in Seoul for [The Ruby Experience] she wore a customized Mark Cruz ruby
-                        diamond necklace, specially designed for her. The piece's deep red brilliance captured JENNY's
-                        alluring yet bold presence on stage.
-                    </p>
-                    <p class="value-text kr">
-                        제니는 [The Ruby Experience] 서울 공연에서, 그녀를 위해 특별히 커스터마이징된 Mark Cruz의 루비 다이아몬드 목걸이를 착용했습니다. 짙은 붉은빛의
-                        보석은 제니의 매혹적이면서도 대담한 무대 위 존재감을 고스란히 담아냈습니다.
-                    </p>
-                </div>
-
-                <div class="info-item facts">
-                    <span class="label">Facts</span>
-                    <div class="fact-list">
-                        <p>stone - ruby diamond</p>
-                        <p>length - choker fit</p>
-                    </div>
-                </div>
-
-                <div class="gallery-grid">
-                    <img src="assets/images/model_1.png" alt="Jenny wearing necklace">
-                    <img src="assets/images/model_2.png" alt="Jenny closeup">
-                </div>
-            </div>
-
-            <!-- Action Card -->
-            <div class="action-card">
-                <div class="timer-section">
-                    <div class="timer-header">Until Expiration</div>
-                    <div class="countdown" id="countdown">
-                        <div class="time-unit">
-                            <span class="number" id="days">15</span>
-                            <span class="unit">Day</span>
-                        </div>
-                        <div class="time-unit">
-                            <span class="number" id="hours">02</span>
-                            <span class="unit">Hour</span>
-                        </div>
-                        <div class="time-unit">
-                            <span class="number" id="mins">34</span>
-                            <span class="unit">Min</span>
-                        </div>
-                        <div class="time-unit">
-                            <span class="number" id="secs">19</span>
-                            <span class="unit">Sec</span>
-                        </div>
-                    </div>
-                    <div class="target-date">2025-Sep-31</div>
-                </div>
-
-                <div class="price-section top-offer">
-                    <div class="label">Top Offer</div>
-                    <div class="price">KRW 75,700,000</div>
-                </div>
-
-                <div class="bidder-count">
-                    <div class="label">Offered Person</div>
-                    <div class="count">2,147</div>
-                </div>
-
-                <div class="input-section">
-                    <div class="label">Your Offer</div>
-                    <div class="input-wrapper">
-                        <span class="currency">KRW</span>
-                        <input type="text" id="offerInput" value="76,000,000">
-                    </div>
-                    <div class="input-line"></div>
-                </div>
-
-                <div class="button-group">
-                    <button class="btn btn-primary">Set Offer</button>
-                    <button class="btn btn-outline" id="groupOfferBtn">Group Offer*</button>
-                </div>
-
-                <div class="footnote">*Group Offer의 경우, 합동 경매 제안 가능</div>
-            </div>
-        </section>
     </main>
 
     <!-- Business Info Footer -->
@@ -154,6 +158,15 @@
         </div>
         <p style="margin-top: 20px; color: #333;">© 2025 Krunch Corp. All rights reserved.</p>
     </footer>
+
+    <!-- Bottom Nav -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-icon active">홈</a>
+        <a href="#" class="nav-icon">스타일</a>
+        <a href="#" class="nav-icon">검색</a>
+        <a href="trade2.html" class="nav-icon">트레이드</a>
+        <a href="#" class="nav-icon">프로필</a>
+    </nav>
 
     <script src="script.js"></script>
 </body>
