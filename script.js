@@ -219,8 +219,8 @@ window.addEventListener('load', () => {
         submitBtn.addEventListener('click', () => {
             const rawValue = offerInput.value.replace(/[^\d]/g, '');
             if (parseInt(rawValue) > CURRENT_BID) {
-                // Success - Redirect to complete2.html
-                window.location.href = 'complete2.html';
+                // Success - Redirect to complete.html
+                window.location.href = 'complete.html';
             } else {
                 // Trigger error visual
                 offerError.style.display = 'block';
